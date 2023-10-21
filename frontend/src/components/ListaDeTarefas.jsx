@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 export const ListaDeTarefas = ({ tarefas, setTarefas }) => {
-    const inputRef = useRef()
+    const inputRef = useRef();
 
     const adicionarTarefas = () => {
         // Para acessar o valor de um input, você deve fazê-lo no manipulador de eventos do botão
@@ -18,13 +18,13 @@ export const ListaDeTarefas = ({ tarefas, setTarefas }) => {
         if (novaTarefa.trim() === '') {
             toast.warn("Informe uma tarefa antes de prosseguir");
         } else {
-            setTarefas([...tarefas, novaTarefa]);
+            setTarefas([...tarefas, { text: novaTarefa, isDone: 'Não feita' }]);
+            toast.success("Tarefa criada com sucesso");
         }
 
         inputRef.current.value = '';
 
-
-        console.log(novaTarefa);
+        console.log(tarefas);
     }
 
     return (
@@ -39,7 +39,7 @@ export const ListaDeTarefas = ({ tarefas, setTarefas }) => {
                 </Container>
                 <Container sx={{ marginTop: '37vh', borderRadius: '10px 10px 0px 0px' }}>
                     <Box sx={{ height: '10vh', margin: 'auto 0' }} display='flex' alignItems='center' justifyContent='center' marginTop='30%' >
-                        <Typography variant="h5" nent="h2" sx={{ color: '#232058', }}>
+                        <Typography variant="h5" component="h2" sx={{ color: '#232058' }}>
                             LISTA DE TAREFAS A FAZER:
                         </Typography>
                     </Box>
